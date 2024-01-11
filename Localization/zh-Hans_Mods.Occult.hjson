@@ -20,3 +20,5 @@ PotentialRanks: {
 	// PotentialRankEpic.DisplayName: Epic
 	// PotentialRankUnique.DisplayName: Unique
 }
+
+// PotentialModifiers.PotentialModifierDamageR.Tooltip: +{0}% Damage
