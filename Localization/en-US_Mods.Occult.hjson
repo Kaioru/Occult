@@ -1,1 +1,16 @@
+Items: {
+	ItemCubePrototype: {
+		DisplayName: Prototype Cube
+		Tooltip: ""
+	}
 
+	ItemCubeGold: {
+		DisplayName: Gold Cube
+		Tooltip: ""
+	}
+
+	ItemCubeOccult: {
+		DisplayName: Occult Cube
+		Tooltip: ""
+	}
+}
