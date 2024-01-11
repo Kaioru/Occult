@@ -11,14 +11,5 @@ namespace Occult
 		{
 			Instance = this;
 		}
-
-		public override void PostSetupContent()
-		{
-			Instance.Find<ModPotentialRarity>("PotentialRarityRare");
-			Instance.Find<ModPotentialRarity>("PotentialRarityEpic");
-			Instance.Find<ModPotentialRarity>("PotentialRarityUnique");
-			
-			base.PostSetupContent();
-		}
 	}
 }

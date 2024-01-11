@@ -5,9 +5,9 @@ using Terraria.ModLoader;
 
 namespace Occult.Potentials.Rarities;
 
-public abstract class ModPotentialRarity : ModType, ILocalizedModType
+public abstract class ModPotentialRank : ModType, ILocalizedModType
 {
-    public string LocalizationCategory => "PotentialRarities";
+    public string LocalizationCategory => "PotentialRanks";
     
     public virtual LocalizedText DisplayName => this.GetLocalization(
         nameof(DisplayName), 
@@ -15,11 +15,11 @@ public abstract class ModPotentialRarity : ModType, ILocalizedModType
     );
     
     public abstract Color Color { get; }
-    public abstract Type? RarityUpgrade { get; }
-    public abstract Type? RarityDowngrade { get; }
+    public abstract Type? UpgradeRank { get; }
+    public abstract Type? DowngradeRank { get; }
     
     protected override sealed void Register()
     {
-        ModTypeLookup<ModPotentialRarity>.Register(this);
+        ModTypeLookup<ModPotentialRank>.Register(this);
     }
 }

@@ -6,6 +6,6 @@ namespace Occult.Potentials;
 
 public class PotentialPool
 {
-    public ModPotentialRarity Rarity { get; }
+    public ModPotentialRank Rank { get; }
     public ICollection<ModPotentialModifier> Modifiers { get; }
 }
