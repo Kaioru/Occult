@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Occult.Potentials.Modifiers;
+using Occult.Potentials.Modifiers.Weapon;
 using Occult.Potentials.Rarities;
 using Terraria;
 using Terraria.ModLoader;
@@ -18,13 +19,13 @@ public class PotentialItem : GlobalItem
     {
         Potentials = new PotentialPool
         {
-            Rank = Mod.Find<ModPotentialRank>(nameof(PotentialRankEpic))
+            Rank = Mod.Find<ModPotentialRank>(nameof(PotentialRankUnique)),
+            Modifiers = new List<ModPotentialModifier>()
         };
 
-        Potentials.Modifiers = new List<ModPotentialModifier>();
-        Potentials.Modifiers.Add(Mod.Find<ModPotentialModifier>(nameof(PotentialModifierDamageR)));
-        Potentials.Modifiers.Add(Mod.Find<ModPotentialModifier>(nameof(PotentialModifierDamageR)));
-        Potentials.Modifiers.Add(Mod.Find<ModPotentialModifier>(nameof(PotentialModifierDamageR)));
+        Potentials.Modifiers.Add(Mod.Find<ModPotentialModifier>(nameof(PotentialModifierDamageFinalR)));
+        Potentials.Modifiers.Add(Mod.Find<ModPotentialModifier>(nameof(PotentialModifierDamageFinalR)));
+        Potentials.Modifiers.Add(Mod.Find<ModPotentialModifier>(nameof(PotentialModifierDamageFinalR)));
     }
     
     public override void LoadData(Item item, TagCompound tag)
@@ -58,7 +59,7 @@ public class PotentialItem : GlobalItem
                         Mod,
                         $"ItemPotentialModifier{i}",
                         modifier.Tooltip
-                            .WithFormatArgs(modifier.Value * Potentials.Rank.Multiplier)
+                            .WithFormatArgs((modifier.Value * Potentials.Rank.Multiplier).ToString("0.##"))
                             .ToString())
                     {
                         IsModifier = true,
@@ -67,6 +68,22 @@ public class PotentialItem : GlobalItem
                 );
             }
         }
+    }
+
+    public override void UpdateEquip(Item item, Player player)
+    {
+        if (Potentials != null)
+            foreach (var modifier in Potentials.Modifiers)
+                modifier.UpdateEquip(Potentials.Rank, item, player);
+        base.UpdateEquip(item, player);
+    }
+
+    public override void UpdateAccessory(Item item, Player player, bool hideVisual)
+    {
+        if (Potentials != null)
+            foreach (var modifier in Potentials.Modifiers)
+                modifier.UpdateAccessory(Potentials.Rank, item, player, hideVisual);
+        base.UpdateAccessory(item, player, hideVisual);
     }
 
     public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)

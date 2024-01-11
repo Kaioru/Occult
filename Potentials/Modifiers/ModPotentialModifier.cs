@@ -14,11 +14,14 @@ public abstract class ModPotentialModifier : ModType, ILocalizedModType
         PrettyPrintName
     );
 
-    public virtual int Value { get; } = 0;
-    
+    public virtual float Value => 0;
+
     protected override sealed void Register()
     {
         ModTypeLookup<ModPotentialModifier>.Register(this);
     }
+    
+    public virtual void UpdateEquip(ModPotentialRank rank, Item item, Player player) {}
+    public virtual void UpdateAccessory(ModPotentialRank rank, Item item, Player player, bool hideVisual) {}
     public virtual void ModifyWeaponDamage(ModPotentialRank rank, Item item, Player player, ref StatModifier damage) {}
 }
