@@ -1,1 +1,7 @@
-Occult! is a pretty cool mod, it does...this. Modify this file with a description of your mod.
+Occult! is a mod that allows you to reroll potentials of equipment pieces! May or may not be inspired by RNG mechanics from certain other video games.
+
+Think of it as the vanilla Terraria modifier reroll, but for stats!
+
+Features:
+1. Shiny new NPC
+2. Nice cubes
