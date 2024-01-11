@@ -1,11 +1,11 @@
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace Occult.Options.Modifiers;
+namespace Occult.Potentials.Modifiers;
 
-public class ModOptionModifier : ModType, ILocalizedModType
+public class ModPotentialModifier : ModType, ILocalizedModType
 {
-    public string LocalizationCategory => "OptionModifiers";
+    public string LocalizationCategory => "PotentialModifiers";
     
     public virtual LocalizedText Tooltip => this.GetLocalization(
         nameof(Tooltip), 
@@ -14,6 +14,6 @@ public class ModOptionModifier : ModType, ILocalizedModType
     
     protected override sealed void Register()
     {
-        ModTypeLookup<ModOptionModifier>.Register(this);
+        ModTypeLookup<ModPotentialModifier>.Register(this);
     }
 }

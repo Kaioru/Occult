@@ -1,4 +1,4 @@
-using Occult.Options.Rarities;
+using Occult.Potentials.Rarities;
 using Terraria.ModLoader;
 
 namespace Occult
@@ -14,9 +14,9 @@ namespace Occult
 
 		public override void PostSetupContent()
 		{
-			Instance.Find<ModOptionRarity>("PotentialRarityRare");
-			Instance.Find<ModOptionRarity>("PotentialRarityEpic");
-			Instance.Find<ModOptionRarity>("PotentialRarityUnique");
+			Instance.Find<ModPotentialRarity>("PotentialRarityRare");
+			Instance.Find<ModPotentialRarity>("PotentialRarityEpic");
+			Instance.Find<ModPotentialRarity>("PotentialRarityUnique");
 			
 			base.PostSetupContent();
 		}

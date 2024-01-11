@@ -14,9 +14,3 @@ Items: {
 		Tooltip: Your standard, black magic cube. Resets potentials of an item with no chance to downgrade.
 	}
 }
-
-OptionRarities: {
-	OptionRarityRare.DisplayName: Rare
-	OptionRarityEpic.DisplayName: Epic
-	OptionRarityUnique.DisplayName: Unique
-}

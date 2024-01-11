@@ -3,11 +3,11 @@ using Microsoft.Xna.Framework;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace Occult.Options.Rarities;
+namespace Occult.Potentials.Rarities;
 
-public abstract class ModOptionRarity : ModType, ILocalizedModType
+public abstract class ModPotentialRarity : ModType, ILocalizedModType
 {
-    public string LocalizationCategory => "OptionRarities";
+    public string LocalizationCategory => "PotentialRarities";
     
     public virtual LocalizedText DisplayName => this.GetLocalization(
         nameof(DisplayName), 
@@ -20,6 +20,6 @@ public abstract class ModOptionRarity : ModType, ILocalizedModType
     
     protected override sealed void Register()
     {
-        ModTypeLookup<ModOptionRarity>.Register(this);
+        ModTypeLookup<ModPotentialRarity>.Register(this);
     }
 }

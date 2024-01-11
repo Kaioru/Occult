@@ -2,12 +2,12 @@ using System;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 
-namespace Occult.Options.Rarities;
+namespace Occult.Potentials.Rarities;
 
-public class OptionRarityRare : ModOptionRarity
+public class PotentialRarityRare : ModPotentialRarity
 {
     public override Color Color => Colors.RarityBlue;
 
-    public override Type RarityUpgrade => typeof(OptionRarityEpic);
+    public override Type RarityUpgrade => typeof(PotentialRarityEpic);
     public override Type? RarityDowngrade => null;
 }
