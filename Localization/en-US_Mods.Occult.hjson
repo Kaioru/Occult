@@ -1,16 +1,16 @@
 Items: {
 	ItemCubePrototype: {
 		DisplayName: Prototype Cube
-		Tooltip: ""
+		Tooltip: "Resets the potentials of an item. There's a chance for the rarity to downgrade, so use at your own risk!"
 	}
 
 	ItemCubeGold: {
 		DisplayName: Gold Cube
-		Tooltip: ""
+		Tooltip: "A very golden cube you can buy with money. Resets the potentials of an item at no risk of rarities downgrading."
 	}
 
 	ItemCubeOccult: {
 		DisplayName: Occult Cube
-		Tooltip: ""
+		Tooltip: "Your standard, black magic cube. Resets potentials of an item with no chance to downgrade."
 	}
 }
