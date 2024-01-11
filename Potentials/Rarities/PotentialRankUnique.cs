@@ -8,7 +8,7 @@ public class PotentialRankUnique : ModPotentialRank
 {
     public override Color Color => Colors.RarityYellow;
 
-    public override Type? UpgradeRank => null;
+    public override Type UpgradeRank => typeof(PotentialRankLegendary);
     public override Type DowngradeRank => typeof(PotentialRankEpic);
     
     public override float Multiplier => 3f;
