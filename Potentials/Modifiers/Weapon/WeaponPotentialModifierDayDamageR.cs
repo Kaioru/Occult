@@ -4,13 +4,14 @@ using Terraria.ModLoader;
 
 namespace Occult.Potentials.Modifiers.Weapon;
 
-public class PotentialModifierNightDamageR : ModPotentialModifier
+public class WeaponPotentialModifierDayDamageR : WeaponPotentialModifier
 {
-    public override float Value => 6;
-    
+    public override float GetStat(ModPotentialRank rank) 
+        => 8f * rank.Multiplier;
+
     public override void ModifyWeaponDamage(ModPotentialRank rank, Item item, Player player, ref StatModifier damage)
     {
-        if (!Main.dayTime)
-            damage += Value * rank.Multiplier / 100f;
+        if (Main.dayTime)
+            damage += GetStat(rank) / 100f;
     }
 }

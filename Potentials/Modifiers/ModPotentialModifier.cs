@@ -11,17 +11,13 @@ public abstract class ModPotentialModifier : ModType, ILocalizedModType
     
     public virtual LocalizedText Tooltip => this.GetLocalization(
         nameof(Tooltip), 
-        PrettyPrintName
+        () => "+{0} ???"
     );
-
-    public virtual float Value => 0;
 
     protected override sealed void Register()
     {
         ModTypeLookup<ModPotentialModifier>.Register(this);
     }
     
-    public virtual void UpdateEquip(ModPotentialRank rank, Item item, Player player) {}
-    public virtual void UpdateAccessory(ModPotentialRank rank, Item item, Player player, bool hideVisual) {}
-    public virtual void ModifyWeaponDamage(ModPotentialRank rank, Item item, Player player, ref StatModifier damage) {}
+    public virtual float GetStat(ModPotentialRank rank) => 0;
 }

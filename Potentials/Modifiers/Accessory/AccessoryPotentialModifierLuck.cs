@@ -3,10 +3,11 @@ using Terraria;
 
 namespace Occult.Potentials.Modifiers.Accessory;
 
-public class PotentialModifierLuck : ModPotentialModifier
+public class AccessoryPotentialModifierLuck : AccessoryPotentialModifier
 {
-    public override float Value => 1;
+    public override float GetStat(ModPotentialRank rank)
+        => 0.5f * rank.Multiplier;
 
     public override void UpdateAccessory(ModPotentialRank rank, Item item, Player player, bool hideVisual)
-        => player.luck += Value * rank.Multiplier;
+        => player.luck += GetStat(rank);
 }

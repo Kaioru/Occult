@@ -20,10 +20,3 @@ PotentialRanks: {
 	PotentialRankEpic.DisplayName: Epic
 	PotentialRankUnique.DisplayName: Unique
 }
-
-PotentialModifiers: {
-	PotentialModifierDamageR.Tooltip: +{0}% Damage
-	PotentialModifierDayDamageR.Tooltip: +{0}% Damage during daytime
-	PotentialModifierNightDamageR.Tooltip: +{0}% Damage during nighttime
-	PotentialModifierDamageFinalR.Tooltip: +{0}% Final Damage
-}

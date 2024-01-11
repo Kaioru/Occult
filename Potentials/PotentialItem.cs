@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Occult.Potentials.Modifiers;
+using Occult.Potentials.Modifiers.Accessory;
+using Occult.Potentials.Modifiers.Equip;
 using Occult.Potentials.Modifiers.Weapon;
 using Occult.Potentials.Rarities;
 using Terraria;
@@ -23,9 +25,9 @@ public class PotentialItem : GlobalItem
             Modifiers = new List<ModPotentialModifier>()
         };
 
-        Potentials.Modifiers.Add(Mod.Find<ModPotentialModifier>(nameof(PotentialModifierDamageFinalR)));
-        Potentials.Modifiers.Add(Mod.Find<ModPotentialModifier>(nameof(PotentialModifierDamageFinalR)));
-        Potentials.Modifiers.Add(Mod.Find<ModPotentialModifier>(nameof(PotentialModifierDamageFinalR)));
+        Potentials.Modifiers.Add(Mod.Find<ModPotentialModifier>(nameof(WeaponPotentialModifierDamageFinalR)));
+        Potentials.Modifiers.Add(Mod.Find<ModPotentialModifier>(nameof(WeaponPotentialModifierDamageFinalR)));
+        Potentials.Modifiers.Add(Mod.Find<ModPotentialModifier>(nameof(WeaponPotentialModifierDamageFinalR)));
     }
     
     public override void LoadData(Item item, TagCompound tag)
@@ -59,7 +61,7 @@ public class PotentialItem : GlobalItem
                         Mod,
                         $"ItemPotentialModifier{i}",
                         modifier.Tooltip
-                            .WithFormatArgs((modifier.Value * Potentials.Rank.Multiplier).ToString("0.##"))
+                            .WithFormatArgs(modifier.GetStat(Potentials.Rank).ToString("0.##"))
                             .ToString())
                     {
                         IsModifier = true,
@@ -74,7 +76,8 @@ public class PotentialItem : GlobalItem
     {
         if (Potentials != null)
             foreach (var modifier in Potentials.Modifiers)
-                modifier.UpdateEquip(Potentials.Rank, item, player);
+                if (modifier is EquipPotentialModifier equipModifier)
+                    equipModifier.UpdateEquip(Potentials.Rank, item, player);
         base.UpdateEquip(item, player);
     }
 
@@ -82,7 +85,8 @@ public class PotentialItem : GlobalItem
     {
         if (Potentials != null)
             foreach (var modifier in Potentials.Modifiers)
-                modifier.UpdateAccessory(Potentials.Rank, item, player, hideVisual);
+                if (modifier is AccessoryPotentialModifier accessoryModifier)
+                    accessoryModifier.UpdateAccessory(Potentials.Rank, item, player, hideVisual);
         base.UpdateAccessory(item, player, hideVisual);
     }
 
@@ -90,7 +94,26 @@ public class PotentialItem : GlobalItem
     {
         if (Potentials != null)
             foreach (var modifier in Potentials.Modifiers)
-                modifier.ModifyWeaponDamage(Potentials.Rank, item, player, ref damage);
+                if (modifier is WeaponPotentialModifier weaponPotential)
+                    weaponPotential.ModifyWeaponDamage(Potentials.Rank, item, player, ref damage);
         base.ModifyWeaponDamage(item, player, ref damage);
+    }
+
+    public override void ModifyWeaponCrit(Item item, Player player, ref float crit)
+    {
+        if (Potentials != null)
+            foreach (var modifier in Potentials.Modifiers)
+                if (modifier is WeaponPotentialModifier weaponPotential)
+                    weaponPotential.ModifyWeaponCrit(Potentials.Rank, item, player, ref crit);
+        base.ModifyWeaponCrit(item, player, ref crit);
+    }
+
+    public override void ModifyHitNPC(Item item, Player player, NPC target, ref NPC.HitModifiers modifiers)
+    {
+        if (Potentials != null)
+            foreach (var modifier in Potentials.Modifiers)
+                if (modifier is WeaponPotentialModifier weaponPotential)
+                    weaponPotential.ModifyHitNPC(Potentials.Rank, item, player, target, ref modifiers);
+        base.ModifyHitNPC(item, player, target, ref modifiers);
     }
 }

@@ -4,10 +4,11 @@ using Terraria.ModLoader;
 
 namespace Occult.Potentials.Modifiers.Weapon;
 
-public class PotentialModifierDamageFinalR : ModPotentialModifier
+public class WeaponPotentialModifierDamageR : WeaponPotentialModifier
 {
-    public override float Value => 0.5f;
-    
+    public override float GetStat(ModPotentialRank rank) 
+        => 3f * rank.Multiplier;
+
     public override void ModifyWeaponDamage(ModPotentialRank rank, Item item, Player player, ref StatModifier damage)
-        => damage *= 1 + Value * rank.Multiplier / 10f;
+        => damage += GetStat(rank) / 100f;
 }
