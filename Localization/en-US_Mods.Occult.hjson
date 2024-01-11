@@ -14,3 +14,11 @@ Items: {
 		Tooltip: Your standard, black magic cube. Resets potentials of an item with no chance to downgrade.
 	}
 }
+
+PotentialRanks: {
+	PotentialRankRare.DisplayName: Rare
+	PotentialRankEpic.DisplayName: Epic
+	PotentialRankUnique.DisplayName: Unique
+}
+
+PotentialModifiers.PotentialModifierDamageR.Tooltip: +{0}% Damage

@@ -10,4 +10,6 @@ public class PotentialRankRare : ModPotentialRank
 
     public override Type UpgradeRank => typeof(PotentialRankEpic);
     public override Type? DowngradeRank => null;
+    
+    public override float Multiplier => 1f;
 }

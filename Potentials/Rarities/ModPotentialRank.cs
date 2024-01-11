@@ -18,6 +18,8 @@ public abstract class ModPotentialRank : ModType, ILocalizedModType
     public abstract Type? UpgradeRank { get; }
     public abstract Type? DowngradeRank { get; }
     
+    public abstract float Multiplier { get; }
+    
     protected override sealed void Register()
     {
         ModTypeLookup<ModPotentialRank>.Register(this);
