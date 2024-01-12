@@ -19,6 +19,8 @@ PotentialRanks: {
 	// PotentialRankRare.DisplayName: Rare
 	// PotentialRankEpic.DisplayName: Epic
 	// PotentialRankUnique.DisplayName: Unique
+	// PotentialRankLegendary.DisplayName: Legendary
+	// PotentialRankTranscendent.DisplayName: Transcendent
 }
 
 PotentialModifiers: {
