@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Occult.Potentials.Strategies;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 

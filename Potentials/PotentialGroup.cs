@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
-using Occult.Items;
 using Occult.Potentials.Modifiers;
 using Occult.Potentials.Rarities;
 using Terraria;
