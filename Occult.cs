@@ -1,4 +1,3 @@
-using Occult.Potentials.Rarities;
 using Terraria.ModLoader;
 
 namespace Occult

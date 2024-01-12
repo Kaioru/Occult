@@ -1,11 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using Occult.Potentials.Modifiers;
-using Occult.Potentials.Modifiers.Accessory;
-using Occult.Potentials.Modifiers.Equip;
-using Occult.Potentials.Modifiers.Weapon;
-using Occult.Potentials.Rarities;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
@@ -15,31 +11,23 @@ public class PotentialItem : GlobalItem
 {
     public override bool InstancePerEntity => true;
 
-    public PotentialPool? Potentials { get; set; }
+    public PotentialGroup? Potentials { get; set; }
 
-    public override void SetDefaults(Item entity)
+    public override void SetDefaults(Item item)
     {
-        Potentials = new PotentialPool
-        {
-            Rank = Mod.Find<ModPotentialRank>(nameof(PotentialRankUnique)),
-            Modifiers = new List<ModPotentialModifier>()
-        };
-
-        Potentials.Modifiers.Add(Mod.Find<ModPotentialModifier>(nameof(WeaponPotentialModifierDamageFinalR)));
-        Potentials.Modifiers.Add(Mod.Find<ModPotentialModifier>(nameof(WeaponPotentialModifierDamageFinalR)));
-        Potentials.Modifiers.Add(Mod.Find<ModPotentialModifier>(nameof(WeaponPotentialModifierDamageFinalR)));
+        Potentials = PotentialGroup.Roll(item);
     }
     
     public override void LoadData(Item item, TagCompound tag)
     {
-        Potentials = PotentialPool.Load(Mod, tag);
+        Potentials = PotentialGroup.Load(item, tag);
     }
 
     public override void SaveData(Item item, TagCompound tag)
     {
-        PotentialPool.Save(Potentials, tag);
+        PotentialGroup.Save(item, Potentials, tag);
     }
-    
+
     public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
     {
         if (Potentials != null)
@@ -76,8 +64,7 @@ public class PotentialItem : GlobalItem
     {
         if (Potentials != null)
             foreach (var modifier in Potentials.Modifiers)
-                if (modifier is EquipPotentialModifier equipModifier)
-                    equipModifier.UpdateEquip(Potentials.Rank, item, player);
+                modifier.UpdateEquip(Potentials.Rank, item, player);
         base.UpdateEquip(item, player);
     }
 
@@ -85,8 +72,7 @@ public class PotentialItem : GlobalItem
     {
         if (Potentials != null)
             foreach (var modifier in Potentials.Modifiers)
-                if (modifier is AccessoryPotentialModifier accessoryModifier)
-                    accessoryModifier.UpdateAccessory(Potentials.Rank, item, player, hideVisual);
+                modifier.UpdateAccessory(Potentials.Rank, item, player, hideVisual);
         base.UpdateAccessory(item, player, hideVisual);
     }
 
@@ -94,8 +80,7 @@ public class PotentialItem : GlobalItem
     {
         if (Potentials != null)
             foreach (var modifier in Potentials.Modifiers)
-                if (modifier is WeaponPotentialModifier weaponPotential)
-                    weaponPotential.ModifyWeaponDamage(Potentials.Rank, item, player, ref damage);
+                modifier.ModifyWeaponDamage(Potentials.Rank, item, player, ref damage);
         base.ModifyWeaponDamage(item, player, ref damage);
     }
 
@@ -103,8 +88,7 @@ public class PotentialItem : GlobalItem
     {
         if (Potentials != null)
             foreach (var modifier in Potentials.Modifiers)
-                if (modifier is WeaponPotentialModifier weaponPotential)
-                    weaponPotential.ModifyWeaponCrit(Potentials.Rank, item, player, ref crit);
+                modifier.ModifyWeaponCrit(Potentials.Rank, item, player, ref crit);
         base.ModifyWeaponCrit(item, player, ref crit);
     }
 
@@ -112,8 +96,7 @@ public class PotentialItem : GlobalItem
     {
         if (Potentials != null)
             foreach (var modifier in Potentials.Modifiers)
-                if (modifier is WeaponPotentialModifier weaponPotential)
-                    weaponPotential.ModifyHitNPC(Potentials.Rank, item, player, target, ref modifiers);
+                modifier.ModifyHitNPC(Potentials.Rank, item, player, target, ref modifiers);
         base.ModifyHitNPC(item, player, target, ref modifiers);
     }
 }

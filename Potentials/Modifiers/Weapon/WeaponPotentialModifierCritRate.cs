@@ -1,6 +1,5 @@
 using Occult.Potentials.Rarities;
 using Terraria;
-using Terraria.ModLoader;
 
 namespace Occult.Potentials.Modifiers.Weapon;
 
