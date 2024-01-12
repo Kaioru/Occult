@@ -9,7 +9,9 @@ public class PotentialRankEpic : ModPotentialRank
     public override Color Color => Colors.RarityPurple;
     
     public override Type UpgradeRank => typeof(PotentialRankUnique);
+    public override float UpgradeRankChance => 10f;
     public override Type DowngradeRank => typeof(PotentialRankRare);
-    
+    public override float DowngradeRankChance => 6f;
+
     public override float Multiplier => 2f;
 }

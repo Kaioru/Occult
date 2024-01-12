@@ -16,7 +16,9 @@ public abstract class ModPotentialRank : ModType, ILocalizedModType
     
     public abstract Color Color { get; }
     public abstract Type? UpgradeRank { get; }
+    public abstract float UpgradeRankChance { get; }
     public abstract Type? DowngradeRank { get; }
+    public abstract float DowngradeRankChance { get; }
     
     public abstract float Multiplier { get; }
     
