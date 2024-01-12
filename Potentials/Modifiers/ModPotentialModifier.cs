@@ -30,4 +30,5 @@ public abstract class ModPotentialModifier : ModType, ILocalizedModType
     public virtual void ModifyWeaponDamage(ModPotentialRank rank, Item item, Player player, ref StatModifier damage) {}
     public virtual void ModifyWeaponCrit(ModPotentialRank rank, Item item, Player player, ref float crit) {}
     public virtual void ModifyHitNPC(ModPotentialRank rank, Item item, Player player, NPC target, ref NPC.HitModifiers modifiers) {}
+    public virtual void ModifyWeaponKnockback(ModPotentialRank potentialsRank, Item item, Player player, ref StatModifier knockback) {}
 }

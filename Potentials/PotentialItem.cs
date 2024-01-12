@@ -92,6 +92,14 @@ public class PotentialItem : GlobalItem
         base.ModifyWeaponCrit(item, player, ref crit);
     }
 
+    public override void ModifyWeaponKnockback(Item item, Player player, ref StatModifier knockback)
+    {
+        if (Potentials != null)
+            foreach (var modifier in Potentials.Modifiers)
+                modifier.ModifyWeaponKnockback(Potentials.Rank, item, player, ref knockback);
+        base.ModifyWeaponKnockback(item, player, ref knockback);
+    }
+
     public override void ModifyHitNPC(Item item, Player player, NPC target, ref NPC.HitModifiers modifiers)
     {
         if (Potentials != null)
