@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Occult.Potentials;
-using Occult.UI;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
