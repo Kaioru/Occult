@@ -20,3 +20,19 @@ PotentialRanks: {
 	PotentialRankEpic.DisplayName: Epic
 	PotentialRankUnique.DisplayName: Unique
 }
+
+PotentialModifiers: {
+	AccessoryPotentialModifierCritRate.Tooltip: +{0}% Critical Rate
+	AccessoryPotentialModifierLuck.Tooltip: +{0} Luck
+	EquipPotentialModifierDefense.Tooltip: +{0} Defense
+	EquipPotentialModifierLife.Tooltip: +{0} Life
+	EquipPotentialModifierMana.Tooltip: +{0} Mana
+	WeaponPotentialModifierDamageR.Tooltip: +{0}% Damage
+	WeaponPotentialModifierDamageFinalR.Tooltip: +{0}% Final Damage
+	WeaponPotentialModifierDayDamageR.Tooltip: +{0}% Damage during daytime
+	WeaponPotentialModifierNightDamageR.Tooltip: +{0}% Damage during nighttime
+	WeaponPotentialModifierBossDamageR.Tooltip: +{0}% Damage to boss enemies
+	WeaponPotentialModifierNonBossDamageR.Tooltip: +{0}% Damage to normal enemies
+	WeaponPotentialModifierCritRate.Tooltip: +{0}% Critical Rate
+	WeaponPotentialModifierCritDamage.Tooltip: +{0}% Critical Damage
+}
