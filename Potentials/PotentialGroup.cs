@@ -48,7 +48,7 @@ public class PotentialGroup
         }
     }
 
-    public static PotentialGroup Roll(Item item, AbstractItemCube? cube = null)
+    public static PotentialGroup? Roll(Item item, AbstractItemCube? cube = null)
     {
         var potentialsOld = item.GetGlobalItem<PotentialItem>().Potentials;
         var potentials = new PotentialGroup
@@ -73,6 +73,6 @@ public class PotentialGroup
                 potentials.Modifiers.Add(modifier);
         }
 
-        return potentials;
+        return potentials.Modifiers.Count == 0 ? null : potentials;
     }
 }
