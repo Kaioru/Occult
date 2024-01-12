@@ -1,19 +1,18 @@
 using System;
 using System.Collections.Generic;
+using Occult.Potentials;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace Occult.Items;
 
-public abstract class AbstractItemCube : ModItem
+public abstract class AbstractItemCube : ModItem, PotentialStrategy
 {
-    public abstract Type? MinRank { get; }
     public abstract Type? MaxRank { get; }
-    
     public abstract float UpgradeRankMultiplier { get; }
     public abstract float DowngradeRankMultiplier { get; }
     public abstract float ModifierUpChance { get; }
-
+    
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
         tooltips.Add(new TooltipLine(

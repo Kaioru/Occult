@@ -48,7 +48,7 @@ public class PotentialGroup
         }
     }
 
-    public static PotentialGroup? Roll(Item item, AbstractItemCube? cube = null)
+    public static PotentialGroup? Roll(Item item, PotentialStrategy strategy)
     {
         var potentialsOld = item.GetGlobalItem<PotentialItem>().Potentials;
         var potentials = new PotentialGroup
@@ -57,13 +57,22 @@ public class PotentialGroup
             Modifiers = new List<ModPotentialModifier>()
         };
         var modifierCount = potentialsOld?.Modifiers.Count ?? 1;
+        var modifierUpChance = strategy.ModifierUpChance;
         var modifiers = Occult.Instance
             .GetContent<ModPotentialModifier>()
             .Where(m => m.CanRoll(item))
             .ToImmutableArray();
 
-        if (true)
-            modifierCount = 3; // TODO
+        while (Random.Shared.NextDouble() < modifierUpChance && modifierCount < 3)
+            modifierCount++;
+
+        if (potentials.Rank != Occult.Instance.Find<ModPotentialRank>(strategy.MaxRank?.Name))
+        {
+            if (potentials.Rank.UpgradeRank != null && Random.Shared.NextDouble() < potentials.Rank.UpgradeRankChance * strategy.UpgradeRankMultiplier)
+                potentials.Rank = Occult.Instance.Find<ModPotentialRank>(potentials.Rank.UpgradeRank?.Name);
+            else if (potentials.Rank.DowngradeRank != null && Random.Shared.NextDouble() < potentials.Rank.DowngradeRankChance * strategy.DowngradeRankMultiplier)
+                potentials.Rank = Occult.Instance.Find<ModPotentialRank>(potentials.Rank.DowngradeRank?.Name);
+        }
 
         for (var i = 0; i < modifierCount; i++)
         {

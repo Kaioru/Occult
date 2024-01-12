@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Occult.Potentials.Strategies;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
@@ -15,7 +16,7 @@ public class PotentialItem : GlobalItem
 
     public override void SetDefaults(Item item)
     {
-        Potentials = PotentialGroup.Roll(item);
+        Potentials = PotentialGroup.Roll(item, new PotentialStrategyDefault(Main.hardMode));
     }
     
     public override void LoadData(Item item, TagCompound tag)
