@@ -10,5 +10,5 @@ public class WeaponPotentialModifierDamageFinalR : WeaponPotentialModifier
         => 0.5f * rank.Multiplier;
 
     public override void ModifyWeaponDamage(ModPotentialRank rank, Item item, Player player, ref StatModifier damage)
-        => damage *= 1 + GetStat(rank) / 10f;
+        => damage *= 1 + GetStat(rank) / 100f;
 }
