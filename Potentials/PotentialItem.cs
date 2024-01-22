@@ -11,20 +11,27 @@ public class PotentialItem : GlobalItem
 {
     public override bool InstancePerEntity => true;
 
+    public bool IsRerolledItem { get; set; }
     public PotentialGroup? Potentials { get; set; }
 
     public override void SetDefaults(Item item)
     {
-        Potentials = PotentialGroup.Roll(item, new PotentialStrategyDefault(Main.hardMode));
+        if (!IsRerolledItem)
+        {
+            IsRerolledItem = true;
+            Potentials = PotentialGroup.Roll(item, new PotentialStrategyDefault(Main.hardMode));
+        }
     }
     
     public override void LoadData(Item item, TagCompound tag)
     {
+        IsRerolledItem = tag.GetBool(nameof(IsRerolledItem));
         Potentials = PotentialGroup.Load(item, tag);
     }
 
     public override void SaveData(Item item, TagCompound tag)
     {
+        tag.Add(nameof(IsRerolledItem), IsRerolledItem);
         PotentialGroup.Save(item, Potentials, tag);
     }
 
